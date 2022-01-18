@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <title></title>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 45px;
+  }
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./stylesheet.css" type="text/css"/>
+
+</head>
+
+<body>
+  <article class="markdown-body">
+  <h1>数値解析 OpenFOAM の進め方?
+	  </h1>
+
+    <p>数値解析における一連の流れは、おおよそ図1に従うと思います。この一連の流れで、身についていると助かる能力は以下のものでしょうか。また、数値解析 OpenFOAMを学習する上で参考になる資料や教材を紹介します。
+	<div class="figure">
+    	<img src="fig/procedure.png" alt="procedure" width="50%" height="50%">
+    	<figcaption>図1 数値解析の流れ</figcaption>
+	</div>
+	<ul class="ul1" >
+  		<li>英語
+			<ul class="ul2">
+				<li>リスニング：YouTubeでの情報収集</li>
+				<li> リーディング: 数値解析のトラブルシューティングに関する情報収集</li>
+			</ul>
+		</li>
+  		<li>Linux：OpenFOAMはLinux系OSで動作するため</li>
+		<li>数値流体力学：解析条件・結果の解釈</li>
+		<li>プログラミング</li>
+			<ul class="ul2">
+				<li>C++：OpenFOAMはC++で記述されている。ただ分からなくて大丈夫。</li>
+				<li>pythonなど（なんでもいい）:解析結果の整理</li>
+			</ul>
+  		<li>形状ファイル：数値解析の形状を自由に設定できる。blenderを使用。</li>
+	</ul>
+
+</p>
+
+<h2>YouTubeでの勉強</h2>
+	<p>
+		<a href="https://www.youtube.com/c/J%C3%B3zsefNagyOpenFOAMGuru/videos" target="_blank" rel="noopener">
+			József Nagy
+		</a>
+	さんのYouTubeはOpenFOAMをとても分かりやすく解説してくれています。その中でも以下のチュートリアルは実際に手を動かすと良いかと思います。
+
+	<ul class="ul3">
+
+		<li class="li1">
+			最初のチュートリアル：<br><a href="https://www.youtube.com/watch?v=KznljrgWSvo" target="_blank" rel="noopener">
+				How to run your first simulation in OpenFOAM - Part 1 & Part 2
+			</a>
+		</li>
+
+		<li class="li1">
+			メッシュの作成：<br><a href="https://www.youtube.com/watch?v=Ds0eK1wXMks" target="_blank" rel="noopener">
+				How to create a grid with blockMesh in OpenFOAM
+			</a>
+		</li>
+
+		<li class="li1">
+			メッシュサイズが数値解析に与える影響の作成：<br><a href="https://www.youtube.com/watch?v=lrGO9QSBq1g" target="_blank" rel="noopener">
+				Understanding grid convergence - Part 1 & Part 2
+			</a>
+		</li>
+
+		<li class="li1">
+			移流方程式：<br><a href="https://www.youtube.com/watch?v=PaDDplpAJJ0" target="_blank" rel="noopener">
+				Introduction to transport equations - Part 1 & Part 2
+			</a>
+		</li>
+
+		<li class="li1">
+			方程式の離散化：<br><a href="https://www.youtube.com/watch?v=YTcMTuxNhoE" target="_blank" rel="noopener">
+				Introduction to discretization - Part 1 & Part 2
+			</a>
+		</li>
+
+		<li class="li1">
+			これまでの振り返り？：<br><a href="https://www.youtube.com/watch?v=jfDzFPaPPug" target="_blank" rel="noopener">
+				How to run your first OpenFOAM case yourself - Part 1 & Part 2
+			</a>
+		</li>
+
+		<li class="li1">
+			乱流モデル（RAS）：<br><a href="https://www.youtube.com/watch?v=IPExwi2Ar-g" target="_blank" rel="noopener">
+				Introduction to stationary turbulence modeling (RAS) - Part 1 - Part 3
+			</a>
+		</li>
+
+		<li class="li1">
+			乱流モデル（RAS, LES）：<br><a href="https://www.youtube.com/watch?v=l8jDBPN4rXo" target="_blank" rel="noopener">
+			Introduction to transient turbulence modeling (RAS,LES) - Part 1 & Part 2
+			</a>
+		</li>
+
+		<li class="li1">
+			気液二相計算：<br><a href="https://www.youtube.com/watch?v=5WO2cDRB_iY" target="_blank" rel="noopener">
+				Understanding multiphase modeling (VOF) - Part 1 & Part 2
+			</a>
+		</li>
+
+		<li class="li1">
+			並列計算：<br><a href="https://www.youtube.com/watch?v=uBIvhhtdHlg" target="_blank" rel="noopener">
+			How to run parallel simulations in OpenFOAM - Part 1 - Part 3
+			</a>
+		</li>
+
+		<li class="li1">
+			気液二相と並列計算の復習？：<br><a href="https://www.youtube.com/watch?v=gZ_TqsPwiXY" target="_blank" rel="noopener">
+				Multiphase simulation project in OpenFOAM in Windows 10 and Ubuntu - tutorial Part 1 - Part 5
+			</a>
+		</li>
+
+	</ul>
+	</p>
+
+<h2>書籍での勉強</h2>
+	<p>「OpenFOAMによる熱移動と流れの数値解析」 と「OpenFOAMライブラリリファレンス」をオススメします（図2）。</p>
+	<div class="figure">
+    	<img src="fig/books.png" alt="books" width="70%" height="70%">
+    	<figcaption>図2 オススメの本</figcaption>
+	</div>
+
+<h2>Webでの勉強</h2>
+	<p>
+		<a href="http://penguinitis.g1.xrea.com/study/OpenFOAM/index.html" target="_blank" rel="noopener">
+			OpenFOAM - PENGUINITIS
+		</a>
+		こちらのサイトは、環境構築、チュートリアルの解説、メッシュ作成、境界条件設定など参考になる情報が日本語で数多く記載されています。
+	</p>
+	<p>
+		<a href="https://www.openfoam.com/documentation/guides/latest/doc/guide-turbulence-ras-k-omega-sst.html" target="_blank" rel="noopener">
+			OpenFOAM: User Guide  v2012（例えば乱流モデルk-w sstを参照）
+		</a>
+		こちらのサイトは公式のユーザーガイドです。英語で記載されていますが、やっぱり頼りになります。
+	</p>
+
+<h2>OpenFOAMにの初期チュートリアルでの勉強</h2>
+	<p>	OpenFOAMの/tutorials以下のフォルダには数多くのソルバーに対応したチュートリアルが用意されています（図3）。これらチュートリアルは本当に参考になります。まず、自分が実施したい解析に対応するソルバーを見つけ、ソルバー内のチュートリアルを参考に境界条件や初期条件を定めるとスムーズに目的の解析ができるかと思います。流量計測の分野ではincompressibleやcompressible内のチュートリアルを参考にすると良いでしょう。</p>
+	<div class="figure">
+    	<img src="fig/tutorials.png" alt="tutorials" width="90%" height="90%">
+    	<figcaption>図3 OpenFOAMにの初期チュートリアル</figcaption>
+	</div>
+
+<h2>blenderについて</h2>
+	<p>数値解析を行う上で複雑な形状設定が必要となる場合があります。私の場合はstlファイルをblenderで作成し、それをOpenFOAMで読み込み、<code>snappyHexMesh -overwrite</code>などで処理することで、メッシュ作成を行っています。blenderを必ず使用する必要はありませんが、stlファイルを作成することができればより解析の自由度も上がると思います。</p>
+	<p>また、blenderは綺麗な絵や動画を作成することも可能です。（図4）分かりやすい絵や動画を作成することが目的であれば、数値解析の必要はなく、blenderだけで事足りる場合も多いと思います。</p>
+
+  <div class="figure">
+    <video width="60%" height="60%" src="fig/nozzleJet.mp4" controls muted autoplay playsinline loop>　</video>
+	</div>
+
+  <div class="figure">
+    <video width="60%" height="60%" src="fig/tsunamiOverflow.mp4" controls muted autoplay playsinline loop></video>
+	  <figcaption>図4 blenderで作成の動画	</figcaption>
+  </div>
+
+
+</article>
+</body>
+</html>
